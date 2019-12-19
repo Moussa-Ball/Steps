@@ -3,7 +3,7 @@
         <nav class="navbar navbar-custom-style fixed-top navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
                 <ul class="navbar-nav mr-auto">
-                    <a v-if="currentSteps > 1 && currentSteps < steps" @click.prevent="previousStep" class="nav-link float-right" href="#">
+                    <a v-if="currentSteps > 1" @click.prevent="previousStep" class="nav-link float-right" href="#">
                         <i class="fas fa-arrow-left" style="position: relative; top: 1px;"></i>
                         <span class="ml-2">Return</span>
                     </a>
@@ -243,6 +243,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-12 mt-5 text-center">
+                            <button @click="nextStep" class="btn-style btn-shdw">
+                                Next <i class="ml-2 fas fa-arrow-right" style="font-size: 13px;"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -346,6 +351,45 @@
                     </div>
                 </div>
             </section>
+             <section id="#steps2" v-if="currentSteps == 4" class="section">
+                 <div class="container">
+                    <div class="row text-center">
+                        <div class="col-md-12 mb-4">
+                            <p style="font-size: 24px;" class="lead">You are sure of your settings ?</p>
+                        </div>
+                        <div class="col-md-12 mt-5">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Project Type</th>
+                                        <th scope="col">Your Colors</th>
+                                        <th scope="col">Chosen Font</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{ name }}</td>
+                                        <td>{{ type }}</td>
+                                        <td>
+                                            <template v-for="color in colors">
+                                                <span class="color-rounded-sm"
+                                                :style="getColor([color], true)"></span>
+                                            </template>
+                                        </td>
+                                        <td>{{ fontname }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-md-12 mt-5 text-center">
+                            <button class="btn-style btn-shdw">
+                                Saves
+                            </button>
+                        </div>
+                    </div>
+                 </div>
+             </section>
         </template>
     </div>
 </template>
@@ -356,7 +400,6 @@
             return {
                 name: "", // The name of new website.
                 type: "", // The type of website.
-                accent: "",
                 rgb: "",
                 
                 selectedColor: 0,
@@ -396,24 +439,13 @@
                 this.rgb = this.colors[item]
             },
             previousStep () {
-                if (this.currentSteps > 1) {
-                    this.currentSteps -= 1
-                    
-                    if(this.progression == 40) {
-                        this.progression = 0
-                    } else {
-                        this.progression -= 20
-                    }
-                }
-                if (this.currentSteps == 1) {
-                    this.type = ""
-                }
-                if (this.currentSteps == 2) {
-                    this.colors = null
-                }
-                if (this.currentSteps == 3) {
-                    this.fontname = ""
-                }
+                if (this.currentSteps > 1)
+                this.currentSteps--
+            },
+            nextStep () {
+                if (this.name == "")
+                    return this.animate('#startup-input', 'bounce')
+                this.currentSteps++
             },
             animate (el, animation) {
                 $(el).removeClass().addClass(animation + ' animated')
@@ -421,23 +453,10 @@
                         function(){ $(this).removeClass(); });
             },
             WebsiteType (type) {
-                if (this.name == "") {
-                    this.animate('#startup-input', 'bounce')
-                }
-                else {
-                    this.type = type;
-                    this.currentSteps = 2
-                }
-            },
-            WebsiteColors (colors, classname) {
-                if (this.name == "") {
-                    this.animate('#startup-input', 'bounce')
-                }
-                else {
-                    this.colors = colors
-                    this.colors_class = classname
-                    this.currentSteps = 3
-                }
+                if (this.name == "")
+                    return this.animate('#startup-input', 'bounce')
+                this.type = type
+                this.nextStep()
             },
             WebsiteFont (fontname) {
                 if (this.name == "") {
@@ -453,28 +472,44 @@
                 $('.setupWizard').hide();
                 $('.navbar.main').show();
                 $('.footer').show();
+
+                this.name = ""
+                this.type = ""
+                this.colors = [
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                ]
             }
         },
         watch: {
             rgb () {
                 this.colors[this.selectedColor - 1] = this.rgb
             },
+            name () {
+                if (!name && this.currentSteps == 1) {
+                    this.progression = 0
+                    this.currentSteps = 1
+                }
+            },
             currentSteps () {
                 switch (this.currentSteps) {
+                    case 1:
+                        this.progression = 0
+                        this.name = ""
+                        this.type = ""
                     case 2:
-                        this.progression = 33.3
+                        this.progression = 30
                     break;
                     case 3:
-                        this.progression = 66.6
+                        this.progression = 60
                     break;
                     case 4:
                         this.progression = 100
                     break;
-                }
-            },
-            colors () {
-                if (this.colors != null) {
-                    this.accent = this.colors[0]
                 }
             }
         },

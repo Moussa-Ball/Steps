@@ -91,6 +91,16 @@
     cursor: pointer;
 }
 
+.color-rounded-sm {
+    border-radius: 50%;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .20);
+    padding: 10px 20px;
+    margin: 0 5px;
+    height: 20px !important;
+    width: 20px !important;
+    cursor: default;
+}
+
 .color-rounded.selected {
     border: 1px solid $global-color !important;
 }
