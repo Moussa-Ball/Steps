@@ -224,7 +224,7 @@
 </template>
 
 <script>
-import LightBoxVideo from "../components/LightboxVideo";
+import LightBoxVideo from "../components/LightBoxVideo";
 export default {
   components: {
     LightBoxVideo

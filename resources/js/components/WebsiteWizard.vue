@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <input id="startup-input" autocomplete="off" type="text" placeholder="What's Your Startup's Name" v-model="name">
-                            <p>What are you making today ?</p>
+                            <p class="lead">What are you making today ?</p>
                         </div>
                         <div class="col-md-3 mt-5" @click="WebsiteType('web')">
                             <div class="card">
@@ -198,27 +198,48 @@
                     <div class="row">
                         <div class="col-md-12">
                             <input id="startup-input" autocomplete="off" type="text" placeholder="What's Your Startup's Name" v-model="name">
-                            <p>What Colors Best Suites Your Startup?</p>
+                            <p class="lead">What Colors Best Suites Your Startup?</p>
                         </div>
                         <div class="col-md-3">
-                            <verte display="widget" :rgbSliders="true"></verte>
+                            <verte display="widget" :rgbSliders="true" v-model="rgb"></verte>
                         </div>
                         <div class="col-md-9">
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex flex-wrap jsutify-content-between color-swatch-container">
                                 <div>
-                                    <span class="color-rounded" :style="rgba([0, 0, 0, 0.90])"></span>
+                                    <span @click="selectColor(0)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 1}" 
+                                        :style="getColor([colors[0]], true)"></span>
+                                    <p>Main Color</p>
                                 </div>
                                 <div>
-                                    <span class="color-rounded" :style="rgba([0, 0, 0, 0.90])"></span>
+                                    <span @click="selectColor(1)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 2}" 
+                                        :style="getColor([colors[1]], true)"></span>
+                                    <p>Second Color</p>
                                 </div>
                                 <div>
-                                    <span class="color-rounded" :style="rgba([0, 0, 0, 0.90])"></span>
+                                    <span @click="selectColor(2)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 3}" 
+                                        :style="getColor([colors[2]], true)"></span>
+                                    <p>Another Color</p>
                                 </div>
                                 <div>
-                                    <span class="color-rounded" :style="rgba([0, 0, 0, 0.90])"></span>
+                                    <span  @click="selectColor(3)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 4}" 
+                                        :style="getColor([colors[3]], true)"></span>
+                                    <p>Dark Text</p>
                                 </div>
                                 <div>
-                                    <span class="color-rounded" :style="rgba([0, 0, 0, 0.90])"></span>
+                                    <span  @click="selectColor(4)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 5}" 
+                                        :style="getColor([colors[4]], true)"></span>
+                                    <p>Light Text</p>
+                                </div>
+                                <div>
+                                    <span  @click="selectColor(5)" class="color-rounded" 
+                                        :class="{'selected': selectedColor === 6}"
+                                        :style="getColor([colors[5]], true)"></span>
+                                    <p>Background</p>
                                 </div>
                             </div>
                         </div>
@@ -230,7 +251,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <input id="startup-input" autocomplete="off" type="text" placeholder="What's Your Startup's Name" v-model="name">
-                            <p>What Font Best Suites Your Startup?</p>
+                            <p class="lead">What Font Best Suites Your Startup?</p>
                         </div>
                         <div @click.prevent="WebsiteFont('cardo')" class="col-md-4 mt-5">
                             <div class="card">
@@ -336,11 +357,20 @@
                 name: "", // The name of new website.
                 type: "", // The type of website.
                 accent: "",
-                colors: null, // 5 colors of website.
+                rgb: "",
+                
+                selectedColor: 0,
+                colors: [
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                    "#ffffff",
+                ], // 5 colors of website.
+                
                 fontname: "", // The name of font.
                 colors_class: null,
-                heading: "Your landing page",
-                subheading: "Hello guy's, welcome to my landing page. Today i'm gonna show you my work.",
                 
                 steps: 4, // The number of step configuration.
                 progression: 0, // The progress of wizard
@@ -348,11 +378,22 @@
             }
         },
         methods: {
-            rgba (color) {
-                const [r, g, b, a] = color;
-                return {
-                    backgroundColor: `rgba(${r},${g},${b},${a})`
-                };
+            getColor (color, ishex = false) {
+                if (!ishex) {
+                    const [r, g, b, a] = color;
+                    return {
+                        backgroundColor: `rgba(${r},${g},${b},${a})`
+                    };
+                }
+                else {
+                    return {
+                        backgroundColor: `${color[0]}`
+                    };
+                }
+            },
+            selectColor (item) {
+                this.selectedColor = item + 1
+                this.rgb = this.colors[item]
             },
             previousStep () {
                 if (this.currentSteps > 1) {
@@ -415,6 +456,9 @@
             }
         },
         watch: {
+            rgb () {
+                this.colors[this.selectedColor - 1] = this.rgb
+            },
             currentSteps () {
                 switch (this.currentSteps) {
                     case 2:

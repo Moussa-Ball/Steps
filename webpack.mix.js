@@ -10,12 +10,13 @@ mix.disableNotifications()
     .js("resources/js/app.js", "public/js")
     .sass("resources/sass/app.scss", "public/css")
     .options({
-        postCss: [
-            require("autoprefixer")({
-                browsers: ["last 40 versions"],
-                grid: true
-            })
-        ]
+        autoprefixer: {
+            options: {
+                browsers: [
+                    'last 6 versions',
+                ]
+            }
+        }
     });
 
 if (mix.inProduction()) {

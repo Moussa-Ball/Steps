@@ -83,11 +83,41 @@
 }
 
 .color-rounded {
-    border-radius: 20%;
-    padding: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .10);
+    padding: 30px 40px;
     height: 40px !important;
     width: 40px !important;
-    .selected {
-        border: 5px solid $global-color;
+    cursor: pointer;
+}
+
+.color-rounded.selected {
+    border: 1px solid $global-color !important;
+}
+
+.color-swatch-container {
+    div {
+        text-align: center;
+        margin: 0 20px;
+    }
+    p {
+        font-size: 12px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (min-width: 992px) {
+    .color-swatch-container {
+        position: relative;
+        top: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .color-swatch-container {
+        margin-left: 80px;
+        position: relative;
+        top: 60px;
     }
 }
