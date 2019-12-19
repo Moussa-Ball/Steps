@@ -1,0 +1,121 @@
+@media (min-width: 992px) {
+    .cta-section {
+        text-align: center;
+        a {
+            position: relative;
+            top: 26px;
+            left: 120px;
+        }
+    }
+
+    .lightbox-video {
+        .video {
+            margin-top: 20px !important;
+        }
+        .video-cross-icon {
+            top: 20px;
+            right: 30px;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .cta-section {
+        text-align: center;
+        a {
+            position: relative;
+            top: 55px;
+        }
+    }
+    .navbar {
+        background-color: white !important;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid rgba(#000000, 0.16) !important;
+        #login {
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+        #register {
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+    }
+    .nav-item.active {
+        a {
+            border-radius: 0;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+    }
+    button.navbar-toggler:focus {
+        outline-color: rgba(#7619df, 0.15);
+    }
+    .navbar-light .navbar-toggler {
+        color: rgba(#7619df, 0.45);
+        border-color: rgba(#7619df, 0.3);
+    }
+    .header {
+        &:before {
+            background-size: 100px;
+            display: none;
+        }
+        .right-square {
+            background-size: 200px !important;
+            display: none;
+            top: -80px;
+        }
+    }
+    .lightbox-video {
+        .video {
+            margin-top: 160px !important;
+        }
+        .video-cross-icon {
+            top: 20px;
+            right: 30px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        background-color: white !important;
+        box-shadow: none;
+    }
+    .header {
+        &:before {
+            background-size: 100px;
+        }
+        .right-square {
+            background-size: 400px !important;
+            top: -100px;
+        }
+    }
+    .section {
+        .line {
+            display: none;
+        }
+    }
+    .cta-section {
+        text-align: center;
+        a {
+            position: relative;
+            top: 50px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        background-color: #ffffff !important;
+        box-shadow: none;
+    }
+    .header {
+        &:before {
+            background-size: 100px;
+        }
+        .right-square {
+            background-size: 400px !important;
+            top: -20px;
+            left: 250px;
+        }
+    }
+}

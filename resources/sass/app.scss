@@ -1,0 +1,36 @@
+/*!
+=========================================================
+* Steps - v1.0
+=========================================================
+
+* Copyright 2019 Steps.
+* Private license.
+* Coded by Moussa Ball <moiseball20155@gmail.com>
+
+=========================================================
+
+* The above copyright notice is: You may not use this file or download it by any means.
+*
+*/
+
+// Variables
+$global-color: #7619df;
+$footer-background: #f1f1f1;
+$footer-link-color: #636363;
+$footer-title-color: #636363;
+$footer-link-color-hover: #808080;
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~verte/dist/verte.css";
+
+// Custom Styles
+@import "typography";
+@import "header";
+@import "button";
+@import "home";
+@import "footer";
+@import "@media.scss";
+@import "lightbox-video.scss";
+@import "website";
+@import "website-wizard";

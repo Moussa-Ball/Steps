@@ -1,0 +1,83 @@
+ol.breadcrumb {
+    background-color: $global-color;
+    box-shadow: 0px 1px 2px rgba(#000, 0.15);
+    border-radius: 4px;
+    li {
+        color: #ffffff !important;
+        a {
+            color: #ffffff !important;
+            text-decoration: none;
+        }
+        &:first-child {
+            margin-left: 0;
+        }
+        &:last-child {
+            &:before {
+                content: "\f105";
+                color: #ffffff;
+                font-weight: 700;
+                font-family: "Font Awesome 5 Free";
+                position: relative;
+                top: 1px;
+            }
+        }
+    }
+}
+
+.website-card {
+    background-color: #f8f8f8;
+    border-radius: 4px !important;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 500px;
+    box-shadow: 0px 1px 5px rgba(#000, 0.15);
+    transition: box-shadow 0.5s;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0px 1px 5px rgba(#000, 0.25);
+    }
+    .ellipse-add {
+        background-color: $global-color;
+        color: #ffffff;
+        text-align: center;
+        border-radius: 50%;
+        height: 200px;
+        width: 200px;
+        font-size: 72px;
+        padding-top: 40px;
+        margin: 0 auto;
+    }
+    .footer-preview {
+        background-color: #e6e8eb;
+        border-radius: 0 0 4px 4px;
+        width: 100%;
+        height: 30px;
+    }
+    .preview-card {
+        background-color: #27224f;
+        border-radius: 4px 4px 0 0 !important;
+        h5 {
+            color: #ffffff;
+        }
+        p {
+            color: #ffffff;
+            font-size: 26px;
+        }
+    }
+    h5.subtitle {
+        color: $footer-link-color;
+        padding-top: 16px;
+        font-weight: 700;
+    }
+}
+
+.title-secion {
+    h1 {
+        color: $footer-link-color;
+    }
+}
+
+.preview-card {
+    border-radius: 4px 4px 0 0;
+    height: 320px;
+}

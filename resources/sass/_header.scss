@@ -1,0 +1,185 @@
+body {
+    background-color: #f1f1f1;
+    padding-top: 6.5rem;
+    overflow-x: hidden;
+}
+
+.header {
+    position: relative;
+    bottom: 105px;
+    height: calc(100vh);
+    width: 100%;
+    &:before {
+        content: "";
+        background-image: url(../js/assets/img/fx/left-square.png);
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 50px;
+        left: -430px;
+        height: 487px;
+        width: 645px;
+        transform: rotate(90deg);
+    }
+    .right-square {
+        background-image: url(../js/assets/img/fx/right-square.png);
+        background-position-x: right;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: -150px;
+        right: -550px;
+        height: 789px;
+        width: 838px;
+        transform: rotate(180deg);
+    }
+    .header-title-container {
+        position: relative;
+        bottom: -20px;
+    }
+    .header-title-position {
+        position: absolute;
+        top: calc(100vh - 70%);
+    }
+    .header-title {
+        color: #636363;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .chevron-container {
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: 50%;
+        .chevron {
+            margin-left: -25px;
+            position: absolute;
+            left: 50%;
+            right: 50%;
+            bottom: 150px;
+            width: 28px;
+            height: 8px;
+            opacity: 0;
+            transform: scale3d(0.5, 0.5, 0.5);
+            animation: move 3s ease-out infinite;
+            &:first-child {
+                animation: move 3s ease-out 1s infinite;
+            }
+            &:nth-child(2) {
+                animation: move 3s ease-out 2s infinite;
+            }
+            &:before,
+            &:after {
+                content: " ";
+                position: absolute;
+                top: 0;
+                height: 100%;
+                width: 51%;
+                background: #5d5d60;
+            }
+            &:before {
+                left: 0;
+                transform: skew(0deg, 30deg);
+            }
+            &:after {
+                right: 0;
+                width: 50%;
+                transform: skew(0deg, -30deg);
+            }
+            @keyframes move {
+                25% {
+                    opacity: 1;
+                }
+                33% {
+                    opacity: 1;
+                    transform: translateY(30px);
+                }
+                67% {
+                    opacity: 1;
+                    transform: translateY(40px);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+                }
+            }
+            @keyframes pulse {
+                to {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .text {
+            display: block;
+            margin-top: -60px;
+            margin-left: -35px;
+            font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+            font-size: 12px;
+            color: #636363;
+            text-transform: uppercase;
+            white-space: nowrap;
+            opacity: 0.25;
+            animation: pulse 2s linear alternate infinite;
+        }
+    }
+}
+
+.navbar {
+    background-color: transparent !important;
+    transition: background-color 0.4s;
+    transition: box-shadow 0.4s;
+    .nav-item {
+        a {
+            background-color: transparent !important;
+            font-size: 1.15rem !important;
+        }
+    }
+    .nav-item.active {
+        a {
+            color: $global-color !important;
+        }
+        .nav-link {
+            font-size: 1.15rem !important;
+        }
+    }
+    .navbar-brand {
+        img {
+            width: 115px;
+            height: 50px;
+        }
+    }
+}
+
+.navbar-custom-style {
+    background-color: white !important;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.navbar-border {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.navbar-shadow {
+    box-shadow: 0px 1px 9px 1px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: rgba(0, 0, 0, 0.6);
+    background-color: transparent;
+}
+
+@media screen and (max-width: 992px) {
+    .navbar {
+        .nav-item {
+            padding-left: 11px !important;
+        }
+    }
+}
+
+.nav-link-white {
+    color: white !important;
+    &:hover {
+        color: rgba(#ffffff, 0.8) !important;
+    }
+    transition: color 0.3s;
+}

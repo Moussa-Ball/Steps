@@ -1,0 +1,33 @@
+.lightbox-video {
+    background: rgba(0, 0, 0, 0.85);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 00;
+    bottom: 0;
+    z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s;
+    .video {
+        margin-top: 20px;
+    }
+    .video-cross-icon {
+        font-size: 1.5rem;
+        position: absolute;
+        top: 30px;
+        right: 50px;
+        cursor: pointer;
+    }
+}
+
+.lightbox-video.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.no-any-scroll {
+    overflow: hidden !important;
+}
