@@ -7,6 +7,7 @@ import Terms from "../views/Terms";
 import Privacy from "../views/Privacy";
 import NotFound from "../views/404.vue";
 import Website from "../views/Website.vue";
+import WebsiteBuilder from "../views/WebsiteBuilder.vue";
 
 // Layouts
 import Footer from "../layouts/Footer";
@@ -56,6 +57,15 @@ const routes = [
             header: Header,
             default: Website,
             footer: Footer
+        }
+    },
+    {
+        path: "/website/:name",
+        name: "builder",
+        components: {
+            header: false,
+            default: WebsiteBuilder,
+            footer: false
         }
     }
 ];

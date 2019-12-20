@@ -42,6 +42,7 @@
     },
     "dependencies": {
         "animate.css": "^3.7.2",
+        "epic-spinners": "^1.1.0",
         "nprogress": "^0.2.0",
         "register-service-worker": "^1.6.2",
         "v-tippy": "^2.0.0",

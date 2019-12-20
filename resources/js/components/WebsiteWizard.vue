@@ -2,13 +2,13 @@
     <div class="setupWizard bounceIn">
         <nav class="navbar navbar-custom-style fixed-top navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
-                <ul class="navbar-nav mr-auto">
+                <ul v-if="!saving" class="navbar-nav mr-auto">
                     <a v-if="currentSteps > 1" @click.prevent="previousStep" class="nav-link float-right" href="#">
                         <i class="fas fa-arrow-left" style="position: relative; top: 1px;"></i>
                         <span class="ml-2">Return</span>
                     </a>
                 </ul>
-                <ul class="navbar-nav">
+                <ul v-if="!saving" class="navbar-nav">
                     <a @click.prevent="cancel" class="nav-link float-right" href="#">
                         <i class="fas fa-times"></i>
                     </a>
@@ -355,9 +355,10 @@
                  <div class="container">
                     <div class="row text-center">
                         <div class="col-md-12 mb-4">
-                            <p style="font-size: 24px;" class="lead">You are sure of your settings ?</p>
+                            <p v-if="!saving" style="font-size: 24px;" class="lead">You are sure of your settings ?</p>
+                            <p v-else style="font-size: 24px;" class="lead">Creating a new project...</p>
                         </div>
-                        <div class="col-md-12 mt-5">
+                        <div v-if="!saving" class="col-md-12 mt-5">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -382,8 +383,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-md-12 mt-5 text-center">
-                            <button class="btn-style btn-shdw">
+                        <div v-if="saving" class="col-md-12 mt-5">
+                            <radar-spinner :animation-duration="2000" :size="60" color="#7619df" />
+                         </div>
+                        <div v-if="!saving" class="col-md-12 mt-5 text-center">
+                            <button @click="saveAndBuild" class="btn-style btn-shdw">
                                 Saves &amp; Build
                             </button>
                         </div>
@@ -395,12 +399,15 @@
 </template>
 
 <script>
+    import { RadarSpinner  } from 'epic-spinners'
     export default {
+        components: {RadarSpinner},
         data () {
             return {
                 name: "", // The name of new website.
                 type: "", // The type of website.
                 rgb: "",
+                saving: false,
                 
                 selectedColor: 0,
                 colors: [
@@ -421,6 +428,9 @@
             }
         },
         methods: {
+            saveAndBuild () {
+                this.saving = true
+            },
             getColor (color, ishex = false) {
                 if (!ishex) {
                     const [r, g, b, a] = color;
@@ -498,18 +508,19 @@
             currentSteps () {
                 switch (this.currentSteps) {
                     case 1:
-                        this.progression = 0
-                        this.name = ""
-                        this.type = ""
+                            this.progression = 0
+                            this.name = ""
+                            this.type = ""
+                        break;
                     case 2:
-                        this.progression = 30
-                    break;
+                            this.progression = 30
+                        break;
                     case 3:
-                        this.progression = 60
-                    break;
+                            this.progression = 60
+                        break;
                     case 4:
-                        this.progression = 100
-                    break;
+                            this.progression = 100
+                        break;
                 }
             }
         },
@@ -518,3 +529,10 @@
         }
     }
 </script>
+
+<style lang="scss">
+    .radar-spinner {
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
