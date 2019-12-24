@@ -1,6 +1,10 @@
 <template>
-  <div :class="currentSite.font">
-    <div class="header-theme" :style="{ background: currentSite.colors[0] }">
+  <div>
+    <div
+      :class="currentSite.font"
+      class="header-theme"
+      :style="{ background: currentSite.colors[0] }"
+    >
       <div class="header-theme-container">
         <a href="#" @click.prevent="showModal('logoSetup')" class="logo">
           {{
@@ -12,17 +16,23 @@
         </div>
       </div>
     </div>
-    <div
-      :class="{'heading-section-one': currentSite.type == 'web', 'heading-section-two': currentSite.type != 'web'}"
-      :style="{ background: currentSite.colors[0] }"
-    >
+    <div :class="getCls" :style="{ background: currentSite.colors[0], font: currentSite.font }">
       <div class="section-container">
-        <div>
+        <div @click.prevent="showModal('headingSetup')" class="heading-subheading">
           <h4>Welcome to startup</h4>
           <p>We can share, build or make for everyone with you.</p>
-          <a href="#" :style="{ color: currentSite.colors[0] }">Learn More</a>
+          <a
+            href="#"
+            class="btn-header"
+            @click.prevent="showModal('headingSetup')"
+            :style="{ color: currentSite.colors[0] }"
+          >Learn More</a>
         </div>
-        <div v-if="currentSite.type != 'web'" class="section-media"></div>
+        <div
+          v-if="currentSite.type != 'web'"
+          class="section-media"
+          :style="{outline: '1px solid ' + currentSite.colors[2]}"
+        ></div>
       </div>
     </div>
     <modal name="logoSetup" :adaptive="true" height="auto" transition="pop-out">
@@ -95,6 +105,28 @@
         <div class="card-body"></div>
       </div>
     </modal>
+    <modal name="headingSetup" :adaptive="true" height="auto" transition="pop-out">
+      <div class="card card-custom">
+        <h5 class="card-header card-header-custom d-flex justify-content-between">
+          Headers
+          <a @click.prevent="closeModal('headingSetup')" href="#" style="color: #7619df;">
+            <img width="15" height="15" src="/images/cross-out.svg" alt="cross" />
+          </a>
+        </h5>
+        <div class="card-body"></div>
+      </div>
+    </modal>
+    <modal name="buttonSetup" :adaptive="true" height="auto" transition="pop-out">
+      <div class="card card-custom">
+        <h5 class="card-header card-header-custom d-flex justify-content-between">
+          Button
+          <a @click.prevent="closeModal('buttonSetup')" href="#" style="color: #7619df;">
+            <img width="15" height="15" src="/images/cross-out.svg" alt="cross" />
+          </a>
+        </h5>
+        <div class="card-body"></div>
+      </div>
+    </modal>
   </div>
 </template>
 
@@ -112,6 +144,15 @@ export default {
   },
   model: {
     event: "change"
+  },
+  computed: {
+    getCls() {
+      if (this.currentSite.type == "web") {
+        return ["heading-section-one", this.currentSite.font];
+      } else {
+        return ["heading-section-two", this.currentSite.font];
+      }
+    }
   },
   methods: {
     saveLogo() {
@@ -221,31 +262,40 @@ export default {
     p {
       color: #fff;
       font-size: 1.5rem;
+      margin-bottom: 80px !important;
       text-align: left;
       position: relative;
       top: 40px;
     }
-    a {
+    a.btn-header {
       padding: 15px 25px;
       background-color: #fff;
-      margin-top: 50px !important;
-      margin-bottom: 50px !important;
-      position: relative;
-      top: 80px;
       &:hover {
         color: #fff;
         text-decoration: none;
+        outline: 2px solid rgba(#7619df, 0.65) !important;
       }
     }
     .section-media {
-      background-color: #ababab;
+      background-color: transparent;
       padding: 150px 260px;
-      position: relative;
       text-align: center;
       max-height: 300px;
       max-width: 500px;
       top: 40px;
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+        outline: 2px solid rgba(#7619df, 0.65) !important;
+      }
     }
+  }
+}
+
+.heading-subheading {
+  cursor: pointer;
+  &:hover {
+    outline: 2px solid rgba(#7619df, 0.65) !important;
   }
 }
 </style>
