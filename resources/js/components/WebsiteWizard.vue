@@ -186,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="card-title">
-                                    <h4>Ipad & Iphone App</h4>
+                                    <h4>Ipad &amp; Iphone App</h4>
                                 </div>
                             </div>
                         </div>
@@ -371,14 +371,14 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ name }}</td>
-                                        <td>{{ type }}</td>
+                                        <td>{{ getProjectType }}</td>
                                         <td>
                                             <template v-for="color in colors">
                                                 <span class="color-rounded-sm"
                                                 :style="getColor([color], true)"></span>
                                             </template>
                                         </td>
-                                        <td>{{ fontname }}</td>
+                                        <td>{{ getFontName }}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -400,6 +400,7 @@
 
 <script>
     import { RadarSpinner  } from 'epic-spinners'
+    const slugify = require('@sindresorhus/slugify');
     export default {
         components: {RadarSpinner},
         data () {
@@ -418,6 +419,13 @@
                     "#ffffff",
                     "#ffffff",
                 ], // 5 colors of website.
+
+                color1: "#ffffff",
+                color2: "#ffffff",
+                color3: "#ffffff",
+                color4: "#ffffff",
+                color5: "#ffffff",
+                color6: "#ffffff",
                 
                 fontname: "", // The name of font.
                 colors_class: null,
@@ -427,9 +435,74 @@
                 currentSteps: 1, // The current step
             }
         },
+        computed: {
+            // eslint-disable-next-line vue/return-in-computed-property
+            getProjectType () {
+                switch (this.type) {
+                    case 'iphone-ipad':
+                        return 'Ipad & Iphone Application'
+                    case 'chrome-extension':
+                        return 'Chrome Extension'
+                    case 'kickstar':
+                        return 'Kickstar'
+                    case 'something':
+                        return 'Something'
+                    case 'open-source-project':
+                        return 'Open Source Project'
+                    case 'responsive':
+                        return 'Responsive Application'
+                    case 'desktop':
+                        return 'Desktop Application'
+                    case 'cross-platform':
+                        return 'Cross Platform'
+                    case 'iphone-android':
+                        return 'Iphone & Android'
+                    case 'android':
+                        return 'Android Application'
+                    case 'iphone':
+                        return 'Iphone Application'
+                    case 'web':
+                        return 'Website'
+                }
+            },
+            getFontName () {
+                switch (this.fontname) {
+                    case 'opensans':
+                        return 'Open Sans'
+                    default:
+                        return this.fontname.charAt(0).toUpperCase() 
+                            + this.fontname.slice(1)
+                }
+            }
+        },
         methods: {
             saveAndBuild () {
+                let _this = this
                 this.saving = true
+                window.onbeforeunload = null;
+                let sites = this.$localStorage.get('Sites');
+
+                let site = {
+                    id: 1,
+                    name: this.name,
+                    type: this.type,
+                    font: this.fontname,
+                    slug: slugify(this.name),
+                    colors: [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6],
+                };
+                
+                if (!sites) {
+                    site.id = 1
+                    this.$localStorage.set('Sites', [site]);
+                } else {
+                    site.id = sites.length + 1
+                    sites.push(site)
+                    this.$localStorage.set('Sites', sites);
+                }
+
+                setTimeout(function () {
+                    _this.$router.push({name: 'builder', params: {slug: site.slug, id: site.id}})
+                }, 5000)
             },
             getColor (color, ishex = false) {
                 if (!ishex) {
@@ -498,6 +571,26 @@
         watch: {
             rgb () {
                 this.colors[this.selectedColor - 1] = this.rgb
+                switch (this.selectedColor) {
+                    case 1:
+                        this.color1 = this.rgb
+                        break;
+                    case 2:
+                        this.color2 = this.rgb
+                        break;
+                    case 3:
+                        this.color3 = this.rgb
+                        break;
+                    case 4:
+                        this.color4 = this.rgb
+                        break;
+                    case 5:
+                        this.color5 = this.rgb
+                        break;
+                    case 6:
+                        this.color6 = this.rgb
+                        break;
+                }
             },
             name () {
                 if (!name && this.currentSteps == 1) {

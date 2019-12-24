@@ -6,11 +6,13 @@ import App from "./App.vue";
 import store from "./store";
 import router from "./router";
 import "./registerServiceWorker";
+import VModal from "vue-js-modal";
 import NProgress from "nprogress";
 import Steps from "./plugins/Steps";
 import VueOffline from "vue-offline";
 import Storage from "vue-web-storage";
 import VueScrollTo from "vue-scrollto";
+import VueTippy, { TippyComponent } from "vue-tippy";
 
 Vue.config.productionTip = true;
 Vue.use(VueScrollTo, {
@@ -27,12 +29,15 @@ Vue.use(VueScrollTo, {
     y: true
 });
 Vue.use(verte);
+Vue.use(VModal);
 Vue.use(VueOffline);
 Vue.use(Storage, {
-    prefix: "steps_conf_",
+    prefix: "",
     drivers: ["local"]
 });
 Vue.use(Steps);
+Vue.use(VueTippy);
+Vue.component("tippy", TippyComponent);
 
 // eslint-disable-next-line no-unused-vars
 router.beforeResolve((to, from, next) => {

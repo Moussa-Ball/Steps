@@ -60,7 +60,7 @@ const routes = [
         }
     },
     {
-        path: "/website/:name",
+        path: "/website/:slug-:id",
         name: "builder",
         components: {
             header: false,

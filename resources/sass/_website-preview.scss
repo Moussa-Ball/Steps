@@ -1,7 +1,6 @@
 .websitePreview {
     overflow-x: hidden;
-    display: none;
-    overflow-y: auto;
+    overflow-y: auto !important;
     background-color: #ffffff;
     margin-top: 95px;
     position: fixed;
@@ -11,6 +10,7 @@
     bottom: 0;
 
     .navbar {
+        height: 93px !important;
         li {
             margin-left: 20px;
 
@@ -23,6 +23,7 @@
     .page__sidebar {
         border-right: 1px solid #eaebef;
         text-align: center;
+        width: 71px !important;
         position: fixed;
         top: 95px;
         left: 0;
@@ -34,27 +35,39 @@
             box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
             list-style: none;
             margin: 25px 20px;
-            padding: 3px 10px;
+            height: 30px;
+            width: 30px;
             text-align: center;
             border-radius: 50%;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            &.selected {
+                border: 2px solid $global-color !important;
+            }
         }
 
         button.add {
             background-color: $global-color !important;
             box-shadow: 0 1px 10px rgba(0, 0, 0, 0.35);
             color: #ffffff !important;
-            padding: 3px 10px;
+            height: 30px;
+            width: 30px;
+            text-align: center;
             font-size: 18px;
             border-radius: 50%;
             outline: none;
             border: none;
+            font-size: 16px;
+            font-weight: 800;
         }
     }
 
     .preview {
         color: #ffffff;
-        overflow: auto;
-        margin-left: 71.06px;
+        overflow: hidden;
+        height: auto;
+        margin-left: 71px;
 
         .black-accent {
             background-color: #4736ca;
@@ -137,4 +150,86 @@
             }
         }
     }
+}
+
+@media (max-width: 992px) {
+    .websitePreview {
+        .navbar-expand-lg .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+        }
+
+        .navbar-nav {
+            display: flex !important;
+            flex-basis: auto;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .websitePreview {
+        .navbar-expand-lg .navbar-collapse {
+            display: flex !important;
+            flex-basis: auto;
+        }
+
+        .navbar-nav {
+            display: flex !important;
+            flex-basis: auto;
+        }
+    }
+}
+
+.v--modal {
+    border-radius: 0;
+    box-shadow: 0 3px 9px rgba(27, 33, 58, 0.4);
+
+    label {
+        color: rgba(#000000, 0.65);
+    }
+}
+
+.card-custom {
+    border-radius: 0 !important;
+    .card-header-custom {
+        background-color: #f8f8f8 !important;
+        color: #212529 !important;
+        border-radius: 0 !important;
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 30px;
+    }
+    .card-body-custom {
+        background-color: #f8f8f8 !important;
+        border-radius: 0 !important;
+    }
+}
+
+.v--modal-overlay {
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.pop-out-enter-active,
+.pop-out-leave-active {
+    transition: all 0.3s;
+}
+.pop-out-enter,
+.pop-out-leave-active {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+/*.form-control {
+    //border-radius: 0;
+}
+
+.form-control:focus {
+    border-color: #7619df !important;
+    box-shadow: 0 0 2px rgba(#7619df, 1) !important;
+}*/
+
+.custom-file-input:focus {
+    border-radius: 0 !important;
+    border-color: #7619df !important;
+    box-shadow: 0 0 2px rgba(#7619df, 1) !important;
 }

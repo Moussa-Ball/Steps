@@ -62,5 +62,11 @@
         "post-install-cmd": [
             "yes | cp -Rf git-hooks/. .git/hooks/"
         ]
+    },
+    "repositories": {
+        "hooks": {
+            "type": "composer",
+            "url": "https://larapack.io"
+        }
     }
 }
