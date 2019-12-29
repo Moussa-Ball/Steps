@@ -28,11 +28,12 @@
             :style="{ color: currentSite.colors[0] }"
           >Learn More</a>
         </div>
-        <div
-          v-if="currentSite.type != 'web'"
-          class="section-media"
-          :style="{outline: '1px solid ' + currentSite.colors[2]}"
-        ></div>
+        <div v-if="currentSite.type != 'web'" class="section-media">
+          <img
+            src="https://via.placeholder.com/468x60?text=Visit+Blogging.com+NowC/O https://placeholder.com/"
+            alt="Gallery"
+          />
+        </div>
       </div>
     </div>
     <modal name="logoSetup" :adaptive="true" height="auto" transition="pop-out">
@@ -279,10 +280,10 @@ export default {
     .section-media {
       background-color: transparent;
       padding: 150px 260px;
-      text-align: center;
       max-height: 300px;
       max-width: 500px;
       top: 40px;
+      cursor: pointer;
       &:hover {
         color: #fff;
         text-decoration: none;
