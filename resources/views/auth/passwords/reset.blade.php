@@ -3,9 +3,28 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12 mb-5 title-secion">
+            <h2 class="d-inline-block">New Password</h2>
+            <nav aria-label="breadcrumb" class="float-right">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/login">Sign in</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="/password/reset">Reset Password</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        New Password
+                    </li>
+                </ol>
+            </nav>
+        </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header border-bottom-0 bg-white text-center">{{ __('Reset Password') }}</div>
+                <div class="card-header border-bottom-0 bg-white text-center">{{ __('New Password') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

@@ -4,24 +4,27 @@ ol.breadcrumb {
     border-radius: 4px;
     li {
         color: #ffffff !important;
+        font-weight: 700;
+        padding-right: 2px;
         a {
             color: #ffffff !important;
             text-decoration: none;
-        }
-        &:first-child {
-            margin-left: 0;
-        }
-        &:last-child {
-            &:before {
-                content: "\f105";
-                color: #ffffff;
-                font-weight: 700;
-                font-family: "Font Awesome 5 Free";
-                position: relative;
-                top: 1px;
+            &:hover {
+                transition: opacity .4s;
+                opacity: .75;
             }
         }
+        &:last-child {
+            font-weight: 100;
+        }
     }
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: #ffffff;
+    content: "/";
 }
 
 .website-card {

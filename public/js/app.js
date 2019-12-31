@@ -55725,7 +55725,44 @@ var render = function() {
           "div",
           { staticClass: "row" },
           [
-            _vm._m(0),
+            _c("div", { staticClass: "col-md-12 mt-5 title-secion" }, [
+              _c("h2", { staticClass: "d-inline-block" }, [_vm._v("Website")]),
+              _vm._v(" "),
+              _c(
+                "nav",
+                {
+                  staticClass: "float-right",
+                  attrs: { "aria-label": "breadcrumb" }
+                },
+                [
+                  _c("ol", { staticClass: "breadcrumb" }, [
+                    _c(
+                      "li",
+                      { staticClass: "breadcrumb-item" },
+                      [
+                        _c("router-link", { attrs: { to: "/" } }, [
+                          _vm._v("Home")
+                        ])
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "breadcrumb-item active",
+                        attrs: { "aria-current": "page" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Website\n                        "
+                        )
+                      ]
+                    )
+                  ])
+                ]
+              )
+            ]),
             _vm._v(" "),
             _vm._l(_vm.sites, function(site) {
               return [
@@ -55747,9 +55784,9 @@ var render = function() {
                             _c("div", { staticClass: "col-md-6" }, [
                               _c("h5", [_vm._v(_vm._s(site.name))]),
                               _vm._v(" "),
-                              _vm._m(1, true),
+                              _vm._m(0, true),
                               _vm._v(" "),
-                              _vm._m(2, true)
+                              _vm._m(1, true)
                             ])
                           ])
                         ])
@@ -55845,39 +55882,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 mt-5 title-secion" }, [
-      _c("h2", { staticClass: "d-inline-block" }, [_vm._v("Website")]),
-      _vm._v(" "),
-      _c(
-        "nav",
-        { staticClass: "float-right", attrs: { "aria-label": "breadcrumb" } },
-        [
-          _c("ol", { staticClass: "breadcrumb" }, [
-            _c("li", { staticClass: "breadcrumb-item" }, [
-              _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
-            ]),
-            _vm._v(" "),
-            _c(
-              "li",
-              {
-                staticClass: "breadcrumb-item active",
-                attrs: { "aria-current": "page" }
-              },
-              [
-                _vm._v(
-                  "\n                            Website\n                        "
-                )
-              ]
-            )
-          ])
-        ]
-      )
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

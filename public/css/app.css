@@ -11970,6 +11970,8 @@ ol.breadcrumb {
 
 ol.breadcrumb li {
   color: #ffffff !important;
+  font-weight: 700;
+  padding-right: 2px;
 }
 
 ol.breadcrumb li a {
@@ -11977,17 +11979,20 @@ ol.breadcrumb li a {
   text-decoration: none;
 }
 
-ol.breadcrumb li:first-child {
-  margin-left: 0;
+ol.breadcrumb li a:hover {
+  transition: opacity 0.4s;
+  opacity: 0.75;
 }
 
-ol.breadcrumb li:last-child:before {
-  content: "\F105";
+ol.breadcrumb li:last-child {
+  font-weight: 100;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-block;
+  padding-right: 0.5rem;
   color: #ffffff;
-  font-weight: 700;
-  font-family: "Font Awesome 5 Free";
-  position: relative;
-  top: 1px;
+  content: "/";
 }
 
 .website-card {

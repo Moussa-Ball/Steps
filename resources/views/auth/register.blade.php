@@ -3,6 +3,19 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12 mb-5 title-secion">
+            <h2 class="d-inline-block">Register</h2>
+            <nav aria-label="breadcrumb" class="float-right">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Register
+                    </li>
+                </ol>
+            </nav>
+        </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-white border-bottom-0 text-center">{{ __('Register') }}</div>

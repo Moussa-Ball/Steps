@@ -7,7 +7,7 @@
                     <nav aria-label="breadcrumb" class="float-right">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="#">Home</a>
+                                <router-link to="/">Home</router-link>
                             </li>
                             <li
                                 class="breadcrumb-item active"
