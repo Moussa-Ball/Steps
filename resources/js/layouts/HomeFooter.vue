@@ -34,7 +34,7 @@
                 <a href="#">Website</a>
               </li>
               <li>
-                <a href="#">Logos</a>
+                <a href="#">Logo</a>
               </li>
             </ul>
           </div>

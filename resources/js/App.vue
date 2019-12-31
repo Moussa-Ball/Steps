@@ -7,6 +7,7 @@
           <router-view />
         </fade-transition>
       </main>
+      <BackToTop></BackToTop>
       <router-view name="footer"></router-view>
     </div>
     <div class="text-center mt-5" v-show="isOffline">
@@ -17,10 +18,11 @@
   </div>
 </template>
 <script>
+import BackToTop from "./components/BackToTop"
 import { FadeTransition } from "vue2-transitions";
 export default {
   components: {
-    FadeTransition
+    FadeTransition, BackToTop
   }
 };
 </script>

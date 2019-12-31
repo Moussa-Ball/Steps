@@ -24,8 +24,11 @@ $footer-link-color-hover: #808080;
 @import "~bootstrap/scss/bootstrap";
 @import "~verte/dist/verte.css";
 
-//@import "~tippy.js/dist/themes/light.css";
+// Tippy
 @import "~tippy.js/dist/themes/translucent.css";
+
+// NProgress";
+@import "~nprogress/nprogress.css";
 
 // Custom Styles
 @import "typography";
@@ -39,3 +42,5 @@ $footer-link-color-hover: #808080;
 @import "website-wizard";
 @import "website-preview";
 @import "fonts";
+@import "nprogress";
+@import "forms";

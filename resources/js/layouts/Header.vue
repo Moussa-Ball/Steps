@@ -32,12 +32,12 @@
           </router-link>
         </ul>
         <ul class="navbar-nav">
-          <router-link class="nav-item" tag="li" to="/login">
-            <a id="login" class="nav-link">Login</a>
-          </router-link>
-          <router-link class="nav-item" tag="li" to="/register">
-            <a id="register" class="nav-link">Register</a>
-          </router-link>
+          <li class="nav-item" tag="li" to="/login">
+            <a href="/login" id="login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item" tag="li" to="/register">
+            <a href="/register" id="register" class="nav-link">Register</a>
+          </li>
         </ul>
       </div>
     </div>

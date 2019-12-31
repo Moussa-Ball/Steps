@@ -101,6 +101,9 @@
             top: 50px;
         }
     }
+    .header-title {
+        font-size: 4.5vw !important;
+    }
 }
 
 @media (max-width: 576px) {
@@ -117,5 +120,8 @@
             top: -20px;
             left: 250px;
         }
+    }
+    .header-title {
+        font-size: 5vw !important;
     }
 }

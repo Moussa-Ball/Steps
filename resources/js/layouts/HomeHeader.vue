@@ -29,13 +29,32 @@
             <a class="nav-link">Name</a>
           </router-link>
         </ul>
-        <ul class="navbar-nav">
-          <router-link class="nav-item" tag="li" to="/login">
-            <a id="login" class="nav-link">Login</a>
-          </router-link>
-          <router-link class="nav-item" tag="li" to="/register">
-            <a id="register" class="nav-link">Register</a>
-          </router-link>
+        <ul class="navbar-nav" v-if="connected == false">
+          <li class="nav-item">
+            <a href="/login" id="login" class="nav-link">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="/register" id="register" class="nav-link">Register</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav" v-if="connected == true">
+          <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ user.name }}
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Upgrade</a>
+                  <a class="dropdown-item" href="#">Settings</a>
+                  <div class="dropdown-divider"></div>
+                  <a id="#logout" class="dropdown-item" href="/logout"
+                      onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+                  <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                      <input type="hidden" name="_token" id="csrf-token" :value="token" />
+                  </form>
+              </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -43,7 +62,18 @@
 </template>
 
 <script>
+import Avatar from 'vue-avatar'
 export default {
+  data () {
+      return {
+        user: {},
+        connected: false,
+        token: document.head.querySelector('meta[name="csrf-token"]').content
+      }
+  },
+  components: {
+      Avatar
+  },
   mounted() {
     $("#login").addClass("nav-link-white");
     $("#register").addClass("nav-link-white");
@@ -55,6 +85,7 @@ export default {
         $("#register").addClass("nav-link-white");
         $("#navbarDropdown").addClass("nav-link-white");
         $(".navbar").removeClass("navbar-shadow navbar-border");
+        $("#logout").addClass("nav-link-white");
       }
 
       if ($(window).scrollTop() > 20) {
@@ -78,6 +109,23 @@ export default {
         }
       });
     }
+  },
+  async created () {
+    let _this = this
+    await this.axios.get('/api/user').then(response => {
+      _this.connected = true
+      _this.user = response.data
+    }).catch(error => {
+      _this.user = false
+      _this.connected = false
+    })
+
+    this.axios.get('test')
+      .then(response => {
+        console.log(response)
+      }).catch(error => {
+        console.log(error)
+      })
   }
 };
 </script>

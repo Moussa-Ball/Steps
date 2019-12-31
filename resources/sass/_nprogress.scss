@@ -1,0 +1,8 @@
+#nprogress .bar {
+    visibility: hidden;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: $global-color;
+    border-left-color: $global-color;
+}

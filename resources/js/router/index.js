@@ -21,7 +21,11 @@ const routes = [
     {
         path: "*",
         name: "404",
-        component: NotFound
+        components: {
+            header: Header,
+            default: NotFound,
+            footer: Footer
+        }
     },
     {
         path: "/",

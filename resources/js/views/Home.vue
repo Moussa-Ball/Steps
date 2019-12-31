@@ -133,13 +133,12 @@
             </div>
           </div>
           <div class="col-md-6 text-center">
-            <a href="#" @click.prevent.stop="showLightBoxVideo">
-              <img class="play-button" src="/images/play.png" alt="play" />
-            </a>
+            <silentbox-single src="https://www.youtube.com/embed/Dzu_bpCcfuA">
+                <img height="50" width="50" class="play-button" src="/images/play.png" alt="play" />
+            </silentbox-single>
           </div>
         </div>
       </div>
-      <LightBoxVideo></LightBoxVideo>
     </section>
     <section class="section mt-5">
       <div class="container">
