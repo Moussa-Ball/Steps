@@ -39,7 +39,7 @@
         </ul>
         <ul class="navbar-nav" v-if="connected == true">
           <li class="nav-item dropdown">
-              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link nav-link-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{ user.name }}
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -119,13 +119,6 @@ export default {
       _this.user = false
       _this.connected = false
     })
-
-    this.axios.get('test')
-      .then(response => {
-        console.log(response)
-      }).catch(error => {
-        console.log(error)
-      })
   }
 };
 </script>

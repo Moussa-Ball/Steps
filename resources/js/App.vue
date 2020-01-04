@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isOnline">
+    <!--<div v-if="isOnline">-->
       <router-view name="header"></router-view>
       <main>
         <fade-transition origin="center" mode="out-in" :duration="250">
@@ -9,12 +9,12 @@
       </main>
       <BackToTop></BackToTop>
       <router-view name="footer"></router-view>
-    </div>
+    <!--</div>
     <div class="text-center mt-5" v-show="isOffline">
       <img class="offline-svg" src="./assets/svg/offline.svg" alt="Offline" />
       <h1 class="display-2">Ho oops!</h1>
       <h1 class="display-4">You lost your internet connection.</h1>
-    </div>
+    </div>-->
   </div>
 </template>
 <script>

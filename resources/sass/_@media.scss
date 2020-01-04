@@ -73,6 +73,12 @@
             right: 30px;
         }
     }
+    .nav-link-white {
+        color: rgba(0, 0, 0, 0.6) !important;
+        &:hover, &:focus {
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+    }
 }
 
 @media (max-width: 768px) {
@@ -104,6 +110,12 @@
     .header-title {
         font-size: 4.5vw !important;
     }
+    .nav-link-white {
+        color: rgba(0, 0, 0, 0.6) !important;
+        &:hover, &:focus {
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
+    }
 }
 
 @media (max-width: 576px) {
@@ -123,5 +135,11 @@
     }
     .header-title {
         font-size: 5vw !important;
+    }
+    .nav-link-white {
+        color: rgba(0, 0, 0, 0.6) !important;
+        &:hover, &:focus {
+            color: rgba(0, 0, 0, 0.6) !important;
+        }
     }
 }

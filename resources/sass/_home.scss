@@ -136,3 +136,14 @@
         right: 0;
     }
 }
+
+.dropdown-menu {
+    border: none;
+    margin-bottom: 10px;
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.65);
+    .dropdown-item {
+        &:hover {
+            background: rgba($global-color, .65) !important;
+        }
+    }
+}

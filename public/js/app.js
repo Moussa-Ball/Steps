@@ -5018,17 +5018,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -55778,19 +55767,39 @@ var render = function() {
                       }
                     },
                     [
-                      _c("div", { staticClass: "preview-card" }, [
-                        _c("div", { staticClass: "container pt-3 pb-3" }, [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c("h5", [_vm._v(_vm._s(site.name))]),
-                              _vm._v(" "),
-                              _vm._m(0, true),
-                              _vm._v(" "),
-                              _vm._m(1, true)
-                            ])
+                      _c(
+                        "div",
+                        {
+                          staticClass: "header-theme",
+                          class: site.font,
+                          style: { background: site.colors[0] }
+                        },
+                        [
+                          _c("div", { staticClass: "header-theme-container" }, [
+                            _c(
+                              "a",
+                              { staticClass: "logo", attrs: { href: "#" } },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(site.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _vm._m(0, true)
                           ])
-                        ])
-                      ]),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", {
+                        class: _vm.getCls,
+                        style: {
+                          background: _vm.currentSite.colors[0],
+                          font: _vm.currentSite.font
+                        }
+                      }),
                       _vm._v(" "),
                       _c("div", { staticClass: "mt-5" }),
                       _vm._v(" "),
@@ -55886,30 +55895,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "pt-2 mt-4" }, [
-      _vm._v(
-        "\n                                            Hey there, nice to\n                                            "
-      ),
-      _c("br"),
-      _vm._v("meet you. I’m "),
-      _c("br"),
-      _vm._v(
-        "your\n                                            website!\n                                        "
-      )
+    return _c("div", { staticClass: "nav-container" }, [
+      _c("a", { attrs: { href: "#" } }, [_vm._v("Accueil")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "btn btn-style mt-3 mb-2",
-        staticStyle: { padding: "10px" }
-      },
-      [_c("span", [_vm._v("Download on App Store")])]
-    )
   }
 ]
 render._withStripped = true

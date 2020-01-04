@@ -18,6 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::get('/api/test', function () {
-    return dd('Hello World');
+Route::get('/test', function () {
+    return 22;
 });

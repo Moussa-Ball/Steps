@@ -6,17 +6,6 @@
     box-shadow: 0 0 0 0.2rem rgba($global-color, 0.25)  !important;
 }
 
-textarea,
-input[type]:not([type=search]):not([type=url]):not([type=hidden]) {
-    &:focus {
-        color: #495057 !important;
-        background-color: #fff  !important;
-        border-color: $global-color  !important;
-        outline: 0  !important;
-        box-shadow: 0 0 0 0.2rem rgba($global-color, 0.25)  !important;
-    }
-}
-
 a.custom-link {
     color: $global-color !important;
     text-decoration: none !important;
@@ -25,27 +14,6 @@ a.custom-link {
         color: rgba($global-color, 0.75) !important;
         text-decoration: underline !important;
     }
-}
-
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {   
-  border-color: $global-color  !important;
-  box-shadow: 0 0 0 0.2rem rgba($global-color, 0.25)  !important;
-  outline: 0 none !important;
 }
 
 

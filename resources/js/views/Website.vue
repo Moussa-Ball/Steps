@@ -20,55 +20,36 @@
                 </div>
                 <template v-for="site in sites">
                     <div class="col-md-6 mt-5 mb-5">
-                        <div
-                            @click="editWebsite(site.slug, site.id)"
-                            class="website-card"
-                        >
-                            <div class="preview-card">
-                                <div class="container pt-3 pb-3">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <h5>{{ site.name }}</h5>
-                                            <p class="pt-2 mt-4">
-                                                Hey there, nice to
-                                                <br />meet you. I’m <br />your
-                                                website!
-                                            </p>
-                                            <button
-                                                class="btn btn-style mt-3 mb-2"
-                                                style="padding: 10px;"
-                                            >
-                                                <span
-                                                    >Download on App Store</span
-                                                >
-                                            </button>
-                                        </div>
+                        <div @click="editWebsite(site.slug, site.id)" style="height: 264px;" class="website-card header-preview">
+                            <div :class="site.font" class="header-theme" :style="{ background: site.colors[0] }">
+                                <div class="header-theme-container">
+                                    <a class="logo">
+                                        {{ site.name }}
+                                    </a>
+                                    <div @click.prevent="showModal('menuSetup')" class="nav-container">
+                                        <a href="#">Accueil</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="mt-5"></div>
-                            <h5 class="text-center subtitle mt-5">
-                                {{ getProjectType(site.type) }}
-                            </h5>
-                            <h5
-                                class="text-center subtitle"
-                                style="opacity: .75;"
-                            >
-                                Unpublished
-                            </h5>
+                            <div :class="getCls(site)" :style="{ background: site.colors[0], font: site.font }">
+                                <div class="section-container">
+                                    <div class="heading-subheading">
+                                        <h4>Welcome to startup</h4>
+                                        <p>We can share, build or make for everyone with you.</p>
+                                        <a href="#" class="btn-header" :style="{ color: site.colors[0] }">
+                                            Learn More
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </template>
-                <div
-                    class="mt-5 mb-5"
-                    :class="{ 'col-md-12': !sites, 'col-md-6': sites }"
-                >
+                <div class="col-md-6 mt-5 mb-5">
                     <div class="website-card" @click.prevent="addWebsite">
                         <div class="pt-5"></div>
+                        <div class="ellipse-add"><span>+</span></div>
                         <div class="pt-5"></div>
-                        <div class="ellipse-add">+</div>
-                        <div class="pt-5"></div>
-                        <div class="pt-4"></div>
                         <h5 class="text-center subtitle">
                             Create a new website.
                         </h5>
@@ -91,8 +72,17 @@ export default {
             sites: []
         };
     },
-    components: { WebsiteWizard },
+    components: { 
+        WebsiteWizard 
+    },
     methods: {
+        getCls(site) {
+            if (site.type == "web") {
+                return ["heading-section-one", site.font];
+            } else {
+                return ["heading-section-two", site.font];
+            }
+        },
         editWebsite(slug, id) {
             this.$router.push({
                 name: "builder",
@@ -140,7 +130,7 @@ export default {
             }
         }
     },
-    created() {
+    async created() {
         this.sites = this.$localStorage.get("Sites");
     }
 };
