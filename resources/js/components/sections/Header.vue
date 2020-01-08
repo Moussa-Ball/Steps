@@ -45,53 +45,51 @@
           </a>
         </h5>
         <div class="card-body">
-          <form>
-            <div class="form-group">
-              <label for="name">Name</label>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              :class="{ invalid: !currentSite.name }"
+              id="name"
+              v-model="name.new"
+            />
+          </div>
+          <div class="form-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="customFileLangHTML" />
+              <label
+                class="custom-file-label"
+                for="customFileLangHTML"
+                data-browse="Browse"
+              >Choose a logo.</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="custom-control custom-radio">
               <input
-                type="text"
-                class="form-control"
-                :class="{ invalid: !currentSite.name }"
-                id="name"
-                v-model="name.new"
+                type="radio"
+                id="customRadio1"
+                name="customRadio"
+                class="custom-control-input"
               />
+              <label class="custom-control-label" for="customRadio1">Use name</label>
             </div>
-            <div class="form-group">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFileLangHTML" />
-                <label
-                  class="custom-file-label"
-                  for="customFileLangHTML"
-                  data-browse="Browse"
-                >Choose a logo.</label>
-              </div>
+            <div class="custom-control custom-radio">
+              <input
+                type="radio"
+                id="customRadio2"
+                name="customRadio"
+                class="custom-control-input"
+              />
+              <label class="custom-control-label" for="customRadio2">Use logo image</label>
             </div>
-            <div class="form-group">
-              <div class="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio1"
-                  name="customRadio"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadio1">Use name</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input
-                  type="radio"
-                  id="customRadio2"
-                  name="customRadio"
-                  class="custom-control-input"
-                />
-                <label class="custom-control-label" for="customRadio2">Use logo image</label>
-              </div>
-            </div>
-            <button
-              type="button"
-              class="btn btn-primary float-right btn-style btn-shdw rounded-0 btn-modal"
-              @click.prevent="saveLogo"
-            >Saves</button>
-          </form>
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary float-right btn-style btn-shdw rounded-0 btn-modal"
+            @click.prevent="saveLogo"
+          >Saves</button>
         </div>
       </div>
     </modal>
@@ -158,7 +156,8 @@ export default {
   methods: {
     saveLogo() {
       this.name.old = this.name.new;
-      this.$emit("change", this.name.old);
+      this.currentSite.name = this.name.old
+      this.$emit("change", this.currentSite);
       this.closeModal("logoSetup");
     },
     showModal(name) {

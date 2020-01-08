@@ -10,6 +10,14 @@ import VueScrollTo from "vue-scrollto";
 import VueSilentbox from 'vue-silentbox'
 import VueTippy, { TippyComponent } from "vue-tippy";
 
+/**
+* ----------------------------------------------------------------
+* IMPORT ALL COMPONENTS FOR EACH SECTION IN THE WEBSITE BUILDER.
+* ----------------------------------------------------------------
+*/
+import Header from '../components/sections/Header'
+import PressLogo from '../components/sections/PressLogo'
+
 export default {
   install(Vue) {
   /**
@@ -49,5 +57,14 @@ export default {
      * ------------------------------------
      */
     Vue.component("tippy", TippyComponent);
+
+
+    /**
+    * ----------------------------------------------------------------
+    * REGISTER ALL COMPONENTS FOR EACH SECTION IN THE WEBSITE BUILDER.
+    * ----------------------------------------------------------------
+    */
+    Vue.component("Header", Header);
+    Vue.component("PressLogo", PressLogo);
   }
 };

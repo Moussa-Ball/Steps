@@ -63,7 +63,7 @@
       </div>
     </nav>
     <div class="page__sidebar">
-      <li class="rounded-circle selected">1</li>
+      <li v-for="(page, index) in site.pages" class="rounded-circle" :class="{'selected': page.active}">{{ index + 1 }}</li>
       <button
         v-tippy="{
                     arrow: true,
@@ -76,7 +76,7 @@
       >+</button>
     </div>
     <div class="preview">
-      <Header :site="site" v-model="site.name" />
+      <div v-for="(item, index) in site.pages[site.currentPage - 1].section" :key="index" :site="site" v-model="site" :is="item.component"></div>
     </div>
     <div class="section-tags mb-5">
       <h4>What would you like to add next?</h4>
@@ -85,7 +85,7 @@
       <div class="container">
         <div class="row text-center">
           <div class="col-md-2">
-            <a href="#">
+            <a @click.prevent="addPressLogo" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-newspaper"></i>
@@ -192,18 +192,17 @@
 </template>
 
 <script>
-import Header from "../components/Header";
 export default {
   data() {
     return {
       site: {},
-      sites: []
+      sites: [],
     };
   },
-  components: {
-    Header
-  },
   methods: {
+    addPressLogo () {
+      this.site.pages[this.site.currentPage - 1].section.push({component: 'PressLogo'})
+    },
     showModal(name) {
       this.$modal.show(name);
     },

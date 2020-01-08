@@ -489,7 +489,41 @@
                     font: this.fontname,
                     slug: slugify(this.name),
                     colors: [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6],
-                };
+                    currentPage: 1,
+                    pages: [{
+                        active: true,
+                        section: [
+                            {
+                                component: 'Header',
+                                logo: {
+                                    text: this.name,
+                                    link: '#',
+                                    img: {
+                                        src: null,
+                                        alt: null
+                                    }
+                                },
+                                header: {
+                                    display: true,
+                                    text: 'Welcome to startup'
+                                },
+                                description: {
+                                    display: true,
+                                    text: 'We can share, build or make for everyone with you.'
+                                },
+                                button: {
+                                    Link: '#',
+                                    display: true,
+                                    text: 'Learn More',
+                                },
+                                menu: [{
+                                    text: 'Home',
+                                    link: '#',
+                                }]
+                            },
+                        ]
+                    }]
+                }
                 
                 if (!sites) {
                     site.id = 1
