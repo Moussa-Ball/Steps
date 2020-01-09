@@ -63,7 +63,11 @@
       </div>
     </nav>
     <div class="page__sidebar">
-      <li v-for="(page, index) in site.pages" class="rounded-circle" :class="{'selected': page.active}">{{ index + 1 }}</li>
+      <li
+        v-for="(page, index) in site.pages"
+        class="rounded-circle"
+        :class="{'selected': page.active}"
+      >{{ index + 1 }}</li>
       <button
         v-tippy="{
                     arrow: true,
@@ -76,7 +80,9 @@
       >+</button>
     </div>
     <div class="preview">
-      <div v-for="(item, index) in site.pages[site.currentPage - 1].section" :key="index" :site="site" v-model="site" :is="item.component"></div>
+      <template v-for="(item, index) in site.pages[site.currentPage - 1].section">
+        <div :key="index" :site="site" :index="index" v-model="site" :is="item.component"></div>
+      </template>
     </div>
     <div class="section-tags mb-5">
       <h4>What would you like to add next?</h4>
@@ -85,7 +91,7 @@
       <div class="container">
         <div class="row text-center">
           <div class="col-md-2">
-            <a @click.prevent="addPressLogo" href="#">
+            <a @click.prevent="addComponent({component: 'PressLogo'})" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-newspaper"></i>
@@ -95,7 +101,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a href="#">
+            <a @click.prevent="addComponent({component: 'Testimonial'})" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-users"></i>
@@ -105,7 +111,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a href="#">
+            <a @click.prevent="addComponent({component: 'Pricing'})" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-dollar-sign"></i>
@@ -125,7 +131,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a href="#">
+            <a @click.prevent="addComponent({component: 'Team'})" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-stream"></i>
@@ -155,7 +161,7 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a href="#">
+            <a @click.prevent="addComponent({component: 'Checklist'})" href="#">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-list-alt"></i>
@@ -196,12 +202,12 @@ export default {
   data() {
     return {
       site: {},
-      sites: [],
+      sites: []
     };
   },
   methods: {
-    addPressLogo () {
-      this.site.pages[this.site.currentPage - 1].section.push({component: 'PressLogo'})
+    addComponent(params) {
+      this.site.pages[this.site.currentPage - 1].section.push(params);
     },
     showModal(name) {
       this.$modal.show(name);
