@@ -34,8 +34,65 @@ const moveSectionInDown = function(sections, component) {
     sections.splice(indexes[0], 2, sections[indexes[1]], sections[indexes[0]]);
 };
 
+/**
+ * Allows to generate an id for a website.
+ */
+const generateId = function() {
+    let now = new Date();
+    let timestamp = new Date().getUTCMilliseconds();
+    timestamp = now.getFullYear().toString();
+    timestamp += (now.getMonth < 9 ? "0" : "") + now.getMonth().toString();
+    timestamp += (now.getDate < 10 ? "0" : "") + now.getDate().toString();
+    timestamp += now.getHours().toString();
+    timestamp += now.getMinutes().toString();
+    timestamp += now.getSeconds().toString();
+    timestamp += now.getMilliseconds().toString();
+    return timestamp;
+};
+
+/**
+ * Allows to save current website.
+ * @param {*} site Represents an object who containing all setup for a website.
+ */
+const saveWebsite = function(site) {
+    let sites = this.$localStorage.get("Sites");
+    let index = sites.findIndex(i => i.id == site.id && i.slug == site.slug);
+    sites[index] = site;
+    this.$localStorage.set("Sites", sites);
+};
+
+/**
+ * Allows to add section as component in the builder.
+ * @param {*} site The current website data.
+ * @param {*} params The configuration as js object of component to add.
+ */
+const addComponent = function(site, params) {
+    site.pages[site.currentPage - 1].sections.push(params);
+};
+
+/**
+ * Allows to show a modal.
+ * @param {*} name The modal name.
+ */
+const showModal = function(name) {
+    this.$modal.show(name);
+};
+
+/**
+ * Allows to close a modal.
+ * @param {*} name The modal name.
+ */
+const closeModal = function(name) {
+    this.$modal.hide(name);
+};
+
 const GlobalMethods = {
     install(Vue) {
+        Vue.prototype.showModal = showModal;
+        Vue.prototype.closeModal = closeModal;
+        Vue.prototype.generateId = generateId;
+        Vue.prototype.saveWebsite = saveWebsite;
+        Vue.prototype.addComponent = addComponent;
         Vue.prototype.moveSectionUp = moveSectionInUp;
         Vue.prototype.moveSectionInDown = moveSectionInDown;
     }

@@ -147,6 +147,11 @@ body {
             height: 50px;
         }
     }
+    .navbar-nav-settings {
+        .nav-link {
+            cursor: pointer;
+        }
+    }
 }
 
 .navbar-custom-style {

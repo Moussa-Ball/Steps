@@ -1,18 +1,20 @@
 <template>
   <div class="websitePreview">
+    <!-- BEGIN NAVBAR SETTINGS -->
     <nav class="navbar navbar-custom-style fixed-top navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">
-        <a class="navbar-brand" @click.prevent="closePreview" href="#">
+        <a class="navbar-brand" href="#">
           <router-link class="nav-link" to="/website">
             <img src="/images/Logo.png" alt="logo" />
           </router-link>
         </a>
         <div>
-          <ul class="navbar-nav mr-right d-flex flex-column flex-md-row justify-content-between">
+          <ul
+            class="navbar-nav navbar-nav-settings mr-right d-flex flex-column flex-md-row justify-content-between"
+          >
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="#"
                 id="nav-tooltip-font"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -24,7 +26,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="#"
                 id="nav-tooltip-preview"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -36,7 +37,6 @@
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="#"
                 id="nav-tooltip-publish"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -49,7 +49,6 @@
               <a
                 @click.prevent.stop="showModal('settings')"
                 class="nav-link"
-                href="#"
                 id="nav-tooltip-settings"
                 data-toggle="tooltip"
                 data-placement="bottom"
@@ -62,10 +61,14 @@
         </div>
       </div>
     </nav>
+    <!-- END NAVBAR SETTINGS -->
+
+    <!-- BEGIN NUMBER OF PAGE AND ADD PAGE -->
     <div class="page__sidebar">
       <li
         v-for="(page, index) in site.pages"
         class="rounded-circle"
+        :key="index"
         :class="{'selected': page.active}"
       >{{ index + 1 }}</li>
       <button
@@ -79,11 +82,17 @@
         class="add rounded-circle"
       >+</button>
     </div>
+    <!-- END NUMBER OF PAGE AND ADD PAGE -->
+
+    <!-- BEGIN LIST OF COMPONENTS -->
     <div class="preview">
-      <template v-for="(item, index) in site.pages[site.currentPage - 1].section">
-        <div :key="index" :site="site" :index="index" v-model="site" :is="item.component"></div>
+      <template v-for="(item, index) in pages[currentPage].sections">
+        <component :key="index" :site="site" :index="index" v-model="site" :is="item.component"></component>
       </template>
     </div>
+    <!-- END LIST OF COMPONENTS -->
+
+    <!-- BEGIN SECTION TAG -->
     <div class="section-tags mb-5">
       <h4>What would you like to add next?</h4>
       <h5>Add your next website block. Once you're finished</h5>
@@ -91,7 +100,7 @@
       <div class="container">
         <div class="row text-center">
           <div class="col-md-2">
-            <a @click.prevent="addComponent({component: 'PressLogo'})" href="#">
+            <a @click.prevent="addComponent(site, {component: 'PressLogo'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-newspaper"></i>
@@ -101,7 +110,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a @click.prevent="addComponent({component: 'Testimonial'})" href="#">
+            <a @click.prevent="addComponent(site, {component: 'Testimonial'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-users"></i>
@@ -111,7 +120,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a @click.prevent="addComponent({component: 'Pricing'})" href="#">
+            <a @click.prevent="addComponent(site, {component: 'Pricing'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-dollar-sign"></i>
@@ -121,7 +130,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a href="#">
+            <a>
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-question-circle"></i>
@@ -131,7 +140,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a @click.prevent="addComponent({component: 'Team'})" href="#">
+            <a @click.prevent="addComponent(site, {component: 'Team'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-stream"></i>
@@ -141,7 +150,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a href="#">
+            <a>
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-video"></i>
@@ -151,7 +160,7 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a href="#">
+            <a>
               <div class="card">
                 <div class="card-body">
                   <i class="fab fa-medium-m"></i>
@@ -161,7 +170,7 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a @click.prevent="addComponent({component: 'Checklist'})" href="#">
+            <a @click.prevent="addComponent(site, {component: 'Checklist'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-list-alt"></i>
@@ -171,7 +180,7 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a href="#">
+            <a @click.prevent="addComponent(site, {component: 'Checklist'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-building"></i>
@@ -183,11 +192,16 @@
         </div>
       </div>
     </div>
+    <!-- END SECTION TAG -->
+
     <modal name="settings" :adaptive="true" height="auto" transition="pop-out">
       <div class="card card-custom">
         <h5 class="card-header card-header-custom d-flex justify-content-between">
           Settings
-          <a @click.prevent="closeModal('settings')" href="#" style="color: #7619df;">
+          <a
+            @click.prevent="closeModal('settings')"
+            style="color: #7619df; cursor: pointer;"
+          >
             <img width="15" height="15" src="/images/cross-out.svg" alt="cross" />
           </a>
         </h5>
@@ -205,15 +219,19 @@ export default {
       sites: []
     };
   },
-  methods: {
-    addComponent(params) {
-      this.site.pages[this.site.currentPage - 1].section.push(params);
+  computed: {
+    pages() {
+      return this.site.pages;
     },
-    showModal(name) {
-      this.$modal.show(name);
-    },
-    closeModal(name) {
-      this.$modal.hide(name);
+    currentPage() {
+      return this.site.currentPage - 1;
+    }
+  },
+  watch: {
+    site() {
+      if (this.site) {
+        this.saveWebsite(this.site);
+      }
     }
   },
   mounted() {
@@ -227,6 +245,11 @@ export default {
     let id = this.$route.params.id;
     let slug = this.$route.params.slug;
     this.sites = this.$localStorage.get("Sites");
+
+    if (this.sites === undefined) {
+      this.sites = this.$localStorage.remove("Sites");
+      _this.$router.push({ name: "404" });
+    }
 
     if (this.sites) {
       this.site = this.sites.filter(function(site) {

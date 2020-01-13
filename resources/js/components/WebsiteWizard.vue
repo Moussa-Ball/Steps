@@ -560,7 +560,7 @@ export default {
       let sites = this.$localStorage.get("Sites");
 
       let site = {
-        id: 1,
+        id: this.generateId(),
         name: this.name,
         type: this.type,
         font: this.fontname,
@@ -577,7 +577,7 @@ export default {
         pages: [
           {
             active: true,
-            section: [
+            sections: [
               {
                 component: "Header",
                 logo: {
@@ -614,10 +614,8 @@ export default {
       };
 
       if (!sites) {
-        site.id = 1;
         this.$localStorage.set("Sites", [site]);
       } else {
-        site.id = sites.length + 1;
         sites.push(site);
         this.$localStorage.set("Sites", sites);
       }
@@ -627,7 +625,7 @@ export default {
           name: "builder",
           params: { slug: site.slug, id: site.id }
         });
-      }, 5000);
+      }, 2000);
     },
     getColor(color, ishex = false) {
       if (!ishex) {
