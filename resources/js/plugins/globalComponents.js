@@ -16,9 +16,14 @@ import VueTippy, { TippyComponent } from "vue-tippy";
  * IMPORT ALL COMPONENTS FOR EACH SECTION IN THE WEBSITE BUILDER.
  * ----------------------------------------------------------------
  */
+import CTA from "../components/sections/CTA";
+import Faq from "../components/sections/Faq";
 import Team from "../components/sections/Team";
+import Footer from "../components/sections/Footer";
+import Medium from "../components/sections/Medium";
 import Header from "../components/sections/Header";
 import Pricing from "../components/sections/Pricing";
+import Features from "../components/sections/Features";
 import PressLogo from "../components/sections/PressLogo";
 import Checklist from "../components/sections/Checklist";
 import Testimonial from "../components/sections/Testimonial";
@@ -70,9 +75,14 @@ export default {
          * REGISTER ALL COMPONENTS FOR EACH SECTION IN THE WEBSITE BUILDER.
          * ----------------------------------------------------------------
          */
+        Vue.component("CTA", CTA);
+        Vue.component("Faq", Faq);
         Vue.component("Team", Team);
+        Vue.component("Footer", Footer);
+        Vue.component("Medium", Medium);
         Vue.component("Header", Header);
         Vue.component("Pricing", Pricing);
+        Vue.component("Features", Features);
         Vue.component("Checklist", Checklist);
         Vue.component("PressLogo", PressLogo);
         Vue.component("Testimonial", Testimonial);

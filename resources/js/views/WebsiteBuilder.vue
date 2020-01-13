@@ -130,7 +130,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a>
+            <a @click.prevent="addComponent(site, {component: 'Faq'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-question-circle"></i>
@@ -150,7 +150,7 @@
             </a>
           </div>
           <div class="col-md-2">
-            <a>
+            <a @click.prevent="addComponent(site, {component: 'CTA'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-video"></i>
@@ -160,7 +160,7 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a>
+            <a @click.prevent="addComponent(site, {component: 'Medium'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fab fa-medium-m"></i>
@@ -180,12 +180,22 @@
             </a>
           </div>
           <div class="col-md-2 mt-5">
-            <a @click.prevent="addComponent(site, {component: 'Checklist'})">
+            <a @click.prevent="addComponent(site, {component: 'Features'})">
               <div class="card">
                 <div class="card-body">
                   <i class="fas fa-building"></i>
                 </div>
                 <div class="card-title">Features</div>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-2 mt-5">
+            <a @click.prevent="addComponent(site, {component: 'Footer'})">
+              <div class="card">
+                <div class="card-body">
+                  <i class="fas fa-shoe-prints"></i>
+                </div>
+                <div class="card-title">Footer</div>
               </div>
             </a>
           </div>

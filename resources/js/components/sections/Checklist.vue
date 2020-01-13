@@ -6,31 +6,51 @@
       <div class="checklist-item">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
         sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At
+        magna aliquyam erat
+        <img
+          src="/images/tick.png"
+          alt="checked"
+        />
       </div>
       <hr />
       <div class="checklist-item">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
         sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At
+        magna aliquyam erat
+        <img
+          src="/images/tick.png"
+          alt="checked"
+        />
       </div>
       <hr />
       <div class="checklist-item">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
         sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At
+        magna aliquyam erat
+        <img
+          src="/images/tick.png"
+          alt="checked"
+        />
       </div>
       <hr />
       <div class="checklist-item">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
         sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At
+        magna aliquyam erat
+        <img
+          src="/images/tick.png"
+          alt="checked"
+        />
       </div>
       <hr />
       <div class="checklist-item">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
         sed diam nonumy eirmod tempor invidunt ut labore et dolore
-        magna aliquyam erat, sed diam voluptua. At
+        magna aliquyam erat
+        <img
+          src="/images/tick.png"
+          alt="checked"
+        />
       </div>
     </div>
   </div>
@@ -69,6 +89,11 @@ export default {
     }
     .checklist-item {
       text-align: left;
+      img {
+        width: 18px;
+        height: 15px;
+        margin-left: 10px;
+      }
     }
   }
 }

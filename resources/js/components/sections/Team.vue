@@ -17,19 +17,16 @@
               magna aliquyam erat, sed diam voluptua. At vero eos
             </p>
           </div>
-        </div>
-        <div class="team-card">
-          <div class="team-card-header">
-            <img src="/images/avatar.png" alt="avatar1" />
-            <h1>James Ambert</h1>
-            <p>Web Developer</p>
-          </div>
-          <div class="team-card-body">
-            <p>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-              sed diam nonumy eirmod tempor invidunt ut labore et dolore
-              magna aliquyam erat, sed diam voluptua. At vero eos
-            </p>
+          <div class="team-card-footer">
+            <a href="#" alt>
+              <img src="/images/facebook.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/linkedin.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/twitter.png" alt />
+            </a>
           </div>
         </div>
         <div class="team-card">
@@ -44,6 +41,42 @@
               sed diam nonumy eirmod tempor invidunt ut labore et dolore
               magna aliquyam erat, sed diam voluptua. At vero eos
             </p>
+          </div>
+          <div class="team-card-footer">
+            <a href="#" alt>
+              <img src="/images/facebook.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/linkedin.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/twitter.png" alt />
+            </a>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-card-header">
+            <img src="/images/avatar.png" alt="avatar1" />
+            <h1>James Ambert</h1>
+            <p>Web Developer</p>
+          </div>
+          <div class="team-card-body">
+            <p>
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+              sed diam nonumy eirmod tempor invidunt ut labore et dolore
+              magna aliquyam erat, sed diam voluptua. At vero eos
+            </p>
+          </div>
+          <div class="team-card-footer">
+            <a href="#" alt>
+              <img src="/images/facebook.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/linkedin.png" alt />
+            </a>
+            <a href="#" alt>
+              <img src="/images/twitter.png" alt />
+            </a>
           </div>
         </div>
       </div>
@@ -64,7 +97,7 @@ export default {
 
 <style lang="scss">
 .team {
-  background: #fff;
+  background: #f1f1f1;
   padding-top: 90px;
   padding-bottom: 80px;
   text-align: center;
@@ -117,6 +150,16 @@ export default {
         .team-card-body {
           p {
             font-size: 16px;
+          }
+        }
+        .team-card-footer {
+          padding-bottom: 40px;
+          a {
+            padding: 0 10px;
+            img {
+              height: 28px;
+              width: 28px;
+            }
           }
         }
       }
