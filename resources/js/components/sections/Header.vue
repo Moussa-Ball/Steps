@@ -6,7 +6,10 @@
       :style="{ background: currentSite.colors[0] }"
     >
       <div class="header-theme-container">
-        <a href="#" @click.prevent="showModal('logoSetup')" class="logo">{{ name.old }}</a>
+        <a v-if="currentSection.logo.img.src" :href="currentSection.logo.link" @click.prevent="showModal('logoSetup')" class="logo">
+         <img :src="currentSection.logo.img.src" alt="logo">
+        </a>
+        <a v-else href="#" @click.prevent="showModal('logoSetup')" class="logo">{{ currentSection.logo.text }}</a>
         <div @click.prevent="showModal('menuSetup')" class="nav-container">
           <a href="#">Accueil</a>
         </div>
@@ -117,11 +120,11 @@
 
 <script>
 export default {
-  props: ["site", "index"],
+  props: ["site", 'section'],
   data() {
     return {
       currentSite: this.site,
-      currentIndex: this.currentIndex,
+      currentSection: this.section,
       name: {
         old: null,
         new: null
@@ -142,9 +145,11 @@ export default {
   },
   methods: {
     saveLogo() {
+      // Set configuration & saves.
       this.name.old = this.name.new;
-      this.currentSite.name = this.name.old;
-      this.$emit("change", this.currentSite);
+      this.currentSection.logo.text = this.name.old;
+      let pageIndex = this.currentSite.currentPage - 1
+      this.saveSectionComponent(this.currentSite, pageIndex, this.currentSection)
       this.closeModal("logoSetup");
     },
     showModal(name) {

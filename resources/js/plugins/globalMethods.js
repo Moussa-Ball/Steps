@@ -59,6 +59,42 @@ const saveWebsite = function(site) {
     let index = sites.findIndex(i => i.id == site.id && i.slug == site.slug);
     sites[index] = site;
     this.$localStorage.set("Sites", sites);
+    new Noty({
+        type: 'success',
+        timeout: 2000,
+        theme: 'metroui',
+        progressBar: false,
+        layout: 'bottomCenter',
+        text: '<strong style="font-size: 18px;">Your changes have been saved!</strong>',
+    }).show()
+};
+
+/**
+ * Allows to save current website.
+ * @param {*} site Represents an object who containing all setup for a website.
+ * @param {*} pageIndex Represents the index of an page from an array.
+ * @param {*} section Represents a component section of an page.
+ */
+const saveSectionComponent = function (site, pageIndex, section) {
+    // Get & Set up data correctly.
+    let sites = this.$localStorage.get("Sites");
+    let index = sites.findIndex(i => i.id == site.id && i.slug == site.slug);
+    let sectionIndex = sites[index].pages[pageIndex]
+        .sections.findIndex(i => i.component == section.component);
+    sites[index].pages[pageIndex].sections[sectionIndex] = section
+    
+    // Saves changes!
+    this.$localStorage.set("Sites", sites);
+
+    // Notify the user.
+    new Noty({
+        type: 'success',
+        timeout: 2000,
+        theme: 'metroui',
+        progressBar: false,
+        layout: 'bottomCenter',
+        text: '<strong style="font-size: 18px;">Your changes have been saved!</strong>',
+    }).show();
 };
 
 /**
@@ -68,6 +104,7 @@ const saveWebsite = function(site) {
  */
 const addComponent = function(site, params) {
     site.pages[site.currentPage - 1].sections.push(params);
+    this.saveWebsite(site)
 };
 
 /**
@@ -95,6 +132,7 @@ const GlobalMethods = {
         Vue.prototype.addComponent = addComponent;
         Vue.prototype.moveSectionUp = moveSectionInUp;
         Vue.prototype.moveSectionInDown = moveSectionInDown;
+        Vue.prototype.saveSectionComponent = saveSectionComponent;
     }
 };
 

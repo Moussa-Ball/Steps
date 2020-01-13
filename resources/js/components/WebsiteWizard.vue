@@ -585,7 +585,7 @@ export default {
                   link: "#",
                   img: {
                     src: null,
-                    alt: null
+                    alt: 'logo'
                   }
                 },
                 heading: {
