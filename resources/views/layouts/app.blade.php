@@ -62,7 +62,7 @@
         <nav class="navbar main border-bottom navbar-custom-style fixed-top navbar-expand-lg navbar-light bg-white">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
-                    <img src="/images/Logo.png" alt="logo" />
+                    <img src="/images/Stepslogo.png" alt="logo" />
                 </a>
                 <button class="navbar-toggler"
                         type="button"
