@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-5 mb-5">
           <div class="ft-logo">
-            <img src="/images/Logo.png" alt="logo" />
+            <img src="/images/Stepslogo.png" alt="logo" />
             <div class="footer-copyright">© 2019</div>
           </div>
         </div>

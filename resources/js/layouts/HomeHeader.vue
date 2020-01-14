@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link class="nav-link" to="/">
-          <img src="/images/Logo.png" alt="logo" />
+          <img src="/images/Stepslogo.png" alt="logo" />
         </router-link>
       </a>
       <button
@@ -39,21 +39,29 @@
         </ul>
         <ul class="navbar-nav" v-if="connected == true">
           <li class="nav-item dropdown">
-              <a class="nav-link nav-link-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{ user.name }}
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Upgrade</a>
-                  <a class="dropdown-item" href="#">Settings</a>
-                  <div class="dropdown-divider"></div>
-                  <a id="#logout" class="dropdown-item" href="/logout"
-                      onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                      Logout
-                  </a>
-                  <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                      <input type="hidden" name="_token" id="csrf-token" :value="token" />
-                  </form>
-              </div>
+            <a
+              class="nav-link nav-link-white"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >{{ user.name }}</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Upgrade</a>
+              <a class="dropdown-item" href="#">Settings</a>
+              <div class="dropdown-divider"></div>
+              <a
+                id="#logout"
+                class="dropdown-item"
+                href="/logout"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+              >Logout</a>
+              <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                <input type="hidden" name="_token" id="csrf-token" :value="token" />
+              </form>
+            </div>
           </li>
         </ul>
       </div>
@@ -62,17 +70,17 @@
 </template>
 
 <script>
-import Avatar from 'vue-avatar'
+import Avatar from "vue-avatar";
 export default {
-  data () {
-      return {
-        user: {},
-        connected: false,
-        token: document.head.querySelector('meta[name="csrf-token"]').content
-      }
+  data() {
+    return {
+      user: {},
+      connected: false,
+      token: document.head.querySelector('meta[name="csrf-token"]').content
+    };
   },
   components: {
-      Avatar
+    Avatar
   },
   mounted() {
     $("#login").addClass("nav-link-white");
@@ -110,15 +118,18 @@ export default {
       });
     }
   },
-  async created () {
-    let _this = this
-    await this.axios.get('/api/user').then(response => {
-      _this.connected = true
-      _this.user = response.data
-    }).catch(error => {
-      _this.user = false
-      _this.connected = false
-    })
+  async created() {
+    let _this = this;
+    await this.axios
+      .get("/api/user")
+      .then(response => {
+        _this.connected = true;
+        _this.user = response.data;
+      })
+      .catch(error => {
+        _this.user = false;
+        _this.connected = false;
+      });
   }
 };
 </script>

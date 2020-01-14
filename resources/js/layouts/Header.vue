@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
         <router-link class="nav-link" to="/">
-          <img src="/images/Logo.png" alt="logo" />
+          <img src="/images/Stepslogo.png" alt="logo" />
         </router-link>
       </a>
       <button
