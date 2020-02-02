@@ -9,7 +9,7 @@
                 <a
                     v-if="currentSection.logo.img.src"
                     :href="currentSection.logo.link"
-                    @click.prevent="showModal('logoSetup')"
+                    @click.prevent="showModal('Header')"
                     class="logo selected-item"
                 >
                     <img :src="currentSection.logo.img.src" alt="logo" />
@@ -17,13 +17,13 @@
                 <a
                     v-else
                     href="#"
-                    @click.prevent="showModal('logoSetup')"
+                    @click.prevent="showModal('Header')"
                     class="logo selected-item"
                     >{{ currentSection.logo.text }}</a
                 >
                 <div
-                    @click.prevent="showModal('menuSetup')"
-                    class="nav-container"
+                    @click.prevent="showModal('Header')"
+                    class="nav-container selected-item"
                 >
                     <a href="#">Accueil</a>
                 </div>
@@ -38,7 +38,7 @@
         >
             <div class="section-container">
                 <div
-                    @click.prevent="showModal('headingSetup')"
+                    @click.prevent="showModal('Header')"
                     class="heading-subheading"
                 >
                     <h4 class="selected-item">Welcome to startup</h4>
@@ -48,7 +48,7 @@
                     <a
                         href="#"
                         class="btn-header selected-item"
-                        @click.prevent="showModal('headingSetup')"
+                        @click.prevent="showModal('Header')"
                         :style="{ color: currentSite.colors[0] }"
                         >Learn More</a
                     >
@@ -62,9 +62,10 @@
             </div>
         </div>
         <modal
-            name="logoSetup"
+            name="Header"
             :adaptive="true"
             height="auto"
+            :scrollable="true"
             transition="pop-out"
         >
             <div class="card card-custom">
@@ -73,7 +74,7 @@
                 >
                     Header
                     <a
-                        @click.prevent="closeModal('logoSetup')"
+                        @click.prevent="closeModal('Header')"
                         href="#"
                         style="color: #7619df;"
                     >
@@ -87,123 +88,7 @@
                 </h5>
                 <div class="card-body">
                     <HeaderSetup :site="site" :section="section"></HeaderSetup>
-                    <!--<div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              class="form-control"
-              :class="{ invalid: !currentSite.name }"
-              id="name"
-              v-model="name.new"
-            />
-          </div>
-          <div class="form-group">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFileLangHTML" />
-              <label
-                class="custom-file-label"
-                for="customFileLangHTML"
-                data-browse="Browse"
-              >Choose a logo.</label>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" />
-              <label class="custom-control-label" for="customRadio1">Use name</label>
-            </div>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" />
-              <label class="custom-control-label" for="customRadio2">Use logo image</label>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="btn btn-primary float-right btn-style btn-shdw rounded-0 btn-modal"
-            @click.prevent="saveLogo"
-          >Saves</button>-->
                 </div>
-            </div>
-        </modal>
-        <modal
-            name="menuSetup"
-            :adaptive="true"
-            height="auto"
-            transition="pop-out"
-        >
-            <div class="card card-custom">
-                <h5
-                    class="card-header card-header-custom d-flex justify-content-between"
-                >
-                    Menu
-                    <a
-                        @click.prevent="closeModal('menuSetup')"
-                        href="#"
-                        style="color: #7619df;"
-                    >
-                        <img
-                            width="15"
-                            height="15"
-                            src="/images/cross-out.svg"
-                            alt="cross"
-                        />
-                    </a>
-                </h5>
-                <div class="card-body"></div>
-            </div>
-        </modal>
-        <modal
-            name="headingSetup"
-            :adaptive="true"
-            height="auto"
-            transition="pop-out"
-        >
-            <div class="card card-custom">
-                <h5
-                    class="card-header card-header-custom d-flex justify-content-between"
-                >
-                    Headers
-                    <a
-                        @click.prevent="closeModal('headingSetup')"
-                        href="#"
-                        style="color: #7619df;"
-                    >
-                        <img
-                            width="15"
-                            height="15"
-                            src="/images/cross-out.svg"
-                            alt="cross"
-                        />
-                    </a>
-                </h5>
-                <div class="card-body"></div>
-            </div>
-        </modal>
-        <modal
-            name="buttonSetup"
-            :adaptive="true"
-            height="auto"
-            transition="pop-out"
-        >
-            <div class="card card-custom">
-                <h5
-                    class="card-header card-header-custom d-flex justify-content-between"
-                >
-                    Button
-                    <a
-                        @click.prevent="closeModal('buttonSetup')"
-                        href="#"
-                        style="color: #7619df;"
-                    >
-                        <img
-                            width="15"
-                            height="15"
-                            src="/images/cross-out.svg"
-                            alt="cross"
-                        />
-                    </a>
-                </h5>
-                <div class="card-body"></div>
             </div>
         </modal>
     </div>

@@ -1,4 +1,5 @@
 <template>
+<template>
   <div class="setupWizard bounceIn">
     <nav class="navbar navbar-custom-style fixed-top navbar-expand-lg navbar-light bg-white">
       <div class="container-fluid">

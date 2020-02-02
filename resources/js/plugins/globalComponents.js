@@ -1,6 +1,7 @@
 import "animate.css";
 import verte from "verte";
 import axios from "axios";
+import Vuesax from "vuesax";
 import VueAxios from "vue-axios";
 import "../registerServiceWorker";
 import VModal from "vue-js-modal";
@@ -11,6 +12,13 @@ import VueSilentbox from "vue-silentbox";
 import Transitions from "vue2-transitions";
 import VueTippy, { TippyComponent } from "vue-tippy";
 
+/**
+ * ---------------------------
+ * IMPORT ALL STYLE FOR VUESAX
+ * ---------------------------
+ */
+import "vuesax/dist/vuesax.css";
+import "material-icons/iconfont/material-icons.css";
 /**
  * ----------------------------------------------------------------
  * IMPORT ALL COMPONENTS FOR EACH SECTION IN THE WEBSITE BUILDER.
@@ -69,6 +77,18 @@ export default {
         Vue.use(VueTippy);
         Vue.use(VModal);
         Vue.use(verte);
+
+        Vue.use(Vuesax, {
+            theme: {
+                colors: {
+                    primary: "#5b3cc4",
+                    success: "rgb(23, 201, 100)",
+                    danger: "rgb(242, 19, 93)",
+                    warning: "rgb(255, 130, 0)",
+                    dark: "rgb(36, 33, 69)"
+                }
+            }
+        });
 
         /**
          * ------------------------------------
