@@ -29,6 +29,13 @@ import Checklist from "../components/sections/Checklist";
 import Testimonial from "../components/sections/Testimonial";
 import ButtonDropdown from "../components/sections/ButtonDropdown";
 
+/**
+ * ----------------------------------------------------------------
+ * IMPORT ALL SETUP FOR EACH SECTION IN THE WEBSITE BUILDER.
+ * ----------------------------------------------------------------
+ */
+import HeaderSetup from "../components/setups/HeaderSetup";
+
 export default {
     install(Vue) {
         /**
@@ -87,5 +94,12 @@ export default {
         Vue.component("PressLogo", PressLogo);
         Vue.component("Testimonial", Testimonial);
         Vue.component("ButtonDropdown", ButtonDropdown);
+
+        /**
+         * ----------------------------------------
+         * REGISTER ALL COMPONENTS FOR EACH SETUPS.
+         * ----------------------------------------
+         */
+        Vue.component("HeaderSetup", HeaderSetup);
     }
 };

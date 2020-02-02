@@ -87,7 +87,7 @@
     <!-- BEGIN LIST OF COMPONENTS -->
     <div class="preview">
       <template v-for="(item, index) in pages[currentPage].sections">
-        <component :key="index" :site="site" :index="index" v-model="site" :is="item.component"></component>
+        <component :key="index" :site="site" :section="item" :is="item.component"></component>
       </template>
     </div>
     <!-- END LIST OF COMPONENTS -->
@@ -235,13 +235,6 @@ export default {
     },
     currentPage() {
       return this.site.currentPage - 1;
-    }
-  },
-  watch: {
-    site() {
-      if (this.site) {
-        this.saveWebsite(this.site);
-      }
     }
   },
   mounted() {
