@@ -21,7 +21,7 @@
             <div class="pricing-card-item">One short program of item</div>
           </div>
           <div class="pricing-card-footer">
-            <a href="#">Placeholder</a>
+            <a href="#" :style="{background: currentSite.colors[0]}">Placeholder</a>
           </div>
         </div>
         <div class="pricing-card">
@@ -41,7 +41,7 @@
             <div class="pricing-card-item">One short program of item</div>
           </div>
           <div class="pricing-card-footer">
-            <a href="#">Placeholder</a>
+            <a href="#" :style="{background: currentSite.colors[0]}">Placeholder</a>
           </div>
         </div>
         <div class="pricing-card">
@@ -61,7 +61,7 @@
             <div class="pricing-card-item">One short program of item</div>
           </div>
           <div class="pricing-card-footer">
-            <a href="#">Placeholder</a>
+            <a href="#" :style="{background: currentSite.colors[0]}">Placeholder</a>
           </div>
         </div>
       </div>

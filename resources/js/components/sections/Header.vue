@@ -6,10 +6,10 @@
       :style="{ background: currentSite.colors[0] }"
     >
       <div class="header-theme-container">
-        <a v-if="currentSection.logo.img.src" :href="currentSection.logo.link" @click.prevent="showModal('logoSetup')" class="logo">
+        <a v-if="currentSection.logo.img.src" :href="currentSection.logo.link" @click.prevent="showModal('logoSetup')" class="logo selected-item">
          <img :src="currentSection.logo.img.src" alt="logo">
         </a>
-        <a v-else href="#" @click.prevent="showModal('logoSetup')" class="logo">{{ currentSection.logo.text }}</a>
+        <a v-else href="#" @click.prevent="showModal('logoSetup')" class="logo selected-item">{{ currentSection.logo.text }}</a>
         <div @click.prevent="showModal('menuSetup')" class="nav-container">
           <a href="#">Accueil</a>
         </div>
@@ -18,11 +18,11 @@
     <div :class="getCls" :style="{ background: currentSite.colors[0], font: currentSite.font }">
       <div class="section-container">
         <div @click.prevent="showModal('headingSetup')" class="heading-subheading">
-          <h4>Welcome to startup</h4>
-          <p>We can share, build or make for everyone with you.</p>
+          <h4 class="selected-item">Welcome to startup</h4>
+          <p class="selected-item">We can share, build or make for everyone with you.</p>
           <a
             href="#"
-            class="btn-header"
+            class="btn-header selected-item"
             @click.prevent="showModal('headingSetup')"
             :style="{ color: currentSite.colors[0] }"
           >Learn More</a>
@@ -181,12 +181,8 @@ export default {
         font-size: 36px;
         line-height: 74px;
         text-decoration: none;
-        &:hover {
-          outline: 2px solid rgba(#7619df, 0.65) !important;
-        }
       }
       .nav-container {
-        cursor: pointer;
         a {
           color: #fff;
           font-size: 1.4rem;
@@ -197,9 +193,7 @@ export default {
             margin-left: 0;
           }
         }
-        &:hover {
-          outline: 2px solid rgba(#7619df, 0.65) !important;
-        }
+     
       }
     }
   }
@@ -211,7 +205,6 @@ export default {
       padding-top: 40px;
       font-size: 3.2rem;
       font-weight: 100;
-
       text-align: center;
     }
     p {
@@ -265,7 +258,6 @@ export default {
         &:hover {
           color: #fff;
           text-decoration: none;
-          outline: 2px solid rgba(#7619df, 0.65) !important;
         }
       }
       .section-media {
@@ -274,20 +266,11 @@ export default {
         max-height: 300px;
         max-width: 500px;
         top: 40px;
-        cursor: pointer;
         &:hover {
           color: #fff;
           text-decoration: none;
-          outline: 2px solid rgba(#7619df, 0.65) !important;
         }
       }
-    }
-  }
-
-  .heading-subheading {
-    cursor: pointer;
-    &:hover {
-      outline: 2px solid rgba(#7619df, 0.65) !important;
     }
   }
 }

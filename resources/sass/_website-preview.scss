@@ -234,3 +234,11 @@
     border-color: #7619df !important;
     box-shadow: 0 0 2px rgba(#7619df, 1) !important;
 }
+
+
+.selected-item {
+    cursor: pointer !important;
+    &:hover {
+        outline: 2px solid rgba(#7619df, 0.65) !important;
+    }
+}
