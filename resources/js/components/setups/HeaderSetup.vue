@@ -195,6 +195,35 @@
                     ></verte>
                 </div>
             </vs-collapse-item>
+
+            <vs-collapse-item>
+                <div slot="header">
+                    Heading - Subheading
+                </div>
+                <div class="form-group">
+                    <label for="heading">Heading</label>
+                    <textarea
+                        style="resize: none;"
+                        class="form-control"
+                        id="heading"
+                        rows="2"
+                        v-model="currentSection.heading.text"
+                    ></textarea>
+                </div>
+                <vs-divider position="center">
+                    Or
+                </vs-divider>
+                <div class="form-group">
+                    <label for="subheading">Subheading</label>
+                    <textarea
+                        style="resize: none;"
+                        class="form-control"
+                        id="subheading"
+                        rows="2"
+                        v-model="currentSection.description.text"
+                    ></textarea>
+                </div>
+            </vs-collapse-item>
         </vs-collapse>
 
         <br />
